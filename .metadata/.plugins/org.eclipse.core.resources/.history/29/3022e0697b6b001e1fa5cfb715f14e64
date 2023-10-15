@@ -1,0 +1,19 @@
+package algorithm1;
+
+import java.util.*;
+
+public class exam8 {
+	
+	public static void main(String[] args) {
+		exam8 exam8 = new exam8(); 
+		Scanner in = new Scanner(System.in);
+		String str = in.next();
+		char ch1 = in.next().charAt(0);
+		System.out.println(exam8.solution(str, ch1));
+	}
+	public int solution(String str,char ch1) {
+		
+
+		return count;
+	}
+}

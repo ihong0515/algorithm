@@ -1,0 +1,20 @@
+package algorithm1;
+
+import java.util.*;
+
+public class exam7 {
+
+	public static void main(String[] args) {
+		exam7 exam7 = new exam7(); 
+		Scanner in = new Scanner(System.in);
+		String str = in.next();
+		char ch1 = in.next().charAt(0);
+		System.out.println(exam7.solution(str));
+	}
+	public int solution(String str) {
+		String answer = "";
+		
+		return answer;
+		}
+		
+	}
