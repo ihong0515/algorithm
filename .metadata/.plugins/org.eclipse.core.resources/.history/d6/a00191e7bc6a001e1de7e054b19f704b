@@ -1,0 +1,17 @@
+package algorithm1;
+
+import java.util.*;
+
+public class javaalgorithm1 {
+
+	public static void main(String[] args) {
+		// 홍재영 알고리즘 1일차 공부입니다.
+		Scanner in = new Scanner(System.in);
+		String input1 = in.next();
+		char input2 = in.nextInt();
+
+	}
+	public void findChar(input1,input2) {
+		
+	}
+}

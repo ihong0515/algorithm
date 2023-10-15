@@ -1,0 +1,28 @@
+package algorithm1;
+
+import java.util.*;
+
+public class exam3 {
+		public static void main(String[] args) {
+		exam3 exam3 = new exam3(); 
+		Scanner in = new Scanner(System.in);
+		System.out.println("문자열을 입력하시오");
+		String str = in.next();
+		System.out.println(exam3.solution(str));
+	}
+	public String solution(String str) {
+		String [] arr = str.split(" ");
+		System.out.println(arr);
+		int length = 0;
+		String answer = "";
+		
+		for(String i : arr) {
+			System.out.println(i);
+			if(i.length() > length){
+				answer = i;
+			}
+		}
+		return answer;
+	}
+	
+}
