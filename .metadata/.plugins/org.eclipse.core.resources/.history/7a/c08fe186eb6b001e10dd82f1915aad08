@@ -1,0 +1,25 @@
+package algorithm1;
+
+import java.util.*;
+
+public class exam9 {
+	
+	public static void main(String[] args) {
+		exam9 exam9 = new exam9(); 
+		Scanner in = new Scanner(System.in);
+		String str = in.next();
+		System.out.println(exam9.solution(str);
+	}
+	public int solution(String str) {
+		
+		int answer = 0;
+		String tmp = "";
+		
+		for(char ch : str.toCharArray()) {
+			if(Character.isDigit(ch)) {
+				tmp += ch;
+			}
+		}
+		answer = Integer.parseInt(tmp);
+	}
+}

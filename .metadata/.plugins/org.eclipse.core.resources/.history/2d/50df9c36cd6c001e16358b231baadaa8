@@ -1,0 +1,49 @@
+package algorithm1;
+
+import java.util.*;
+
+public class exam13 {
+
+	public static void main(String[] args) {
+		exam13 exam1 = new exam13(); 
+		Scanner in = new Scanner(System.in);
+		String str = in.next();
+		System.out.println(exam1.solution(str));
+	}
+	public String solution(String str) {
+	
+	}
+}
+
+
+/* 잘못 짰던 코드 */
+
+/* 놓쳤던포인트 */
+
+// 아래 풀이는문자열 내에서 총 반복 되는횟수를 카운팅한건데 이 문제에서는 애초에 연속 되서 반복되는 경우에만 옆에다가숫자 붙여서쓰라고했음 이중 반복을 돌릴 필요가 없는것
+
+//String answer = "";
+//int count = 0;   --> 첫 회문이어도 무조건 하나가있긴하잖아 count 를 1로 두고 시작했어야했어
+//char ch = 0;
+//for(int i = 0; i < str.length(); i++) {
+//	
+//	//해당차수의 문자
+//	ch = str.charAt(i);
+//	//해당문자 출현숫자
+//	count = 0;
+//	//answer에 이미 해당 차수에 문자가 들어가있지 않거나 첫 회문 일때 
+//	answer += ch;
+//	//중복인경우에만
+//	if(str.indexOf(str.charAt(i)) == i) {
+//		for(int j = 0; j < str.length(); j++) {
+//			if(ch == str.charAt(j)) {
+//				count ++;
+//			}
+//		}
+//		
+//		if(count > 1) {
+//			answer += count;
+//		}
+//	}
+//}
+//return answer;
