@@ -1,0 +1,44 @@
+package algorithm2;
+
+import java.util.*;
+
+public class exam4_1 {
+
+	public static void main(String[] args) {
+		// 홍재영 알고리즘 1일차 공부입니다.
+		exam4_1 exam1 = new exam4_1(); 
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		//피보나치 재귀함수 결과 담을 배열 미리 선언 해주기
+		int [] arr = new int [100];
+		
+		//함수의 반환을 미리 선언 해둔 변수를 초기화 값에 맞게 저장해 두었다면 그냥 이렇게 실행만 해주어도 ㄱㅊ
+		exam1.solution(n);
+		
+		for(int a : arr) {
+			System.out.print(a + " ");
+		}
+		
+	}
+	//재귀 함수를 사용하는 방법
+	public int[]  solution(int n) {
+		int [] arr = new int [n];
+		//핵심은 피보나치는 맨앞 두개가 주어져야 한다 안그러면 피보나치 만들수가 없음 
+		//그래서 두개를 미리지정해주고 반복을 그 두개 다음 배열 인덱스부터 시작한다.
+		arr[0] = 1;
+		arr[1] = 1;
+		int result = 0;
+		
+		for(int i =2; i < n; i++) {
+			
+			if(i == 1) {
+				result = 1;
+			}else if(i == 2) {
+				result = 1;
+			}else if(i >= 3) {
+				
+			}
+		}
+		return arr;
+	}	
+}

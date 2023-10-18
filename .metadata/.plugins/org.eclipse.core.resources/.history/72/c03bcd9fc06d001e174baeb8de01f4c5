@@ -1,0 +1,41 @@
+package algorithm2;
+
+import java.util.*;
+
+public class exam4 {
+
+	public static void main(String[] args) {
+		// 홍재영 알고리즘 1일차 공부입니다.
+		exam4 exam1 = new exam4(); 
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		
+		for(int a : exam1.solution(n)) {
+			System.out.print(a + " ");
+		}
+		
+	}
+	public ArrayList<Integer>  solution(int n) {
+		ArrayList<Integer> answer = new ArrayList<>();
+		
+		int first_num = 1;
+		
+		int second_num = 1;
+		
+		answer.add(first_num);
+		answer.add(second_num);
+		
+		
+		
+		for(int i = 2;  i < n; i++) {
+			
+			int third_num = first_num + second_num;
+			
+			answer.add(third_num);
+			
+			first_num = third_num 
+			
+		}
+		return answer;
+	}	
+}
