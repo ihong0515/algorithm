@@ -3,63 +3,93 @@ package algorithm2;
 import java.util.*;
 
 public class exam8 {
-	/*
-	 * 8. 등수구하기 설명
-	 * 
-	 * N명의 학생의 국어점수가 입력되면 각 학생의 등수를 입력된 순서대로 출력하는 프로그램을 작성하세요.
-	 * 
-	 * 같은 점수가 입력될 경우 높은 등수로 동일 처리한다.
-	 * 
-	 * 즉 가장 높은 점수가 92점인데 92점이 3명 존재하면 1등이 3명이고 그 다음 학생은 4등이 된다.
-	 * 
-	 * 
-	 * 입력 첫 줄에 N(3<=N<=100)이 입력되고, 두 번째 줄에 국어점수를 의미하는 N개의 정수가 입력된다.
-	 * 
-	 * 
-	 * 출력 입력된 순서대로 등수를 출력한다.
-	 * 
-	 * 
-	 * 예시 입력 1
-	 * 
-	 * 5 87 89 92 100 76 예시 출력 1
-	 * 
-	 * 4 3 2 1 5
-	 */
+//	9. 격자판 최대합
+//	설명
+//
+//	5*5 격자판에 아래롸 같이 숫자가 적혀있습니다.
+//
+//	Image1.jpg
+//
+//	N*N의 격자판이 주어지면 각 행의 합, 각 열의 합, 두 대각선의 합 중 가 장 큰 합을 출력합니다.
+//
+//
+//	입력
+//	첫 줄에 자연수 N이 주어진다.(2<=N<=50)
+//
+//	두 번째 줄부터 N줄에 걸쳐 각 줄에 N개의 자연수가 주어진다. 각 자연수는 100을 넘지 않는다.
+//
+//
+//	출력
+//	최대합을 출력합니다.
+//
+//
+//	예시 입력 1 
+//
+//	5
+//	10 13 10 12 15
+//	12 39 30 23 11
+//	11 25 50 53 15
+//	19 27 29 37 27
+//	19 13 30 13 19
+//	예시 출력 1
+//
+//	155
 	public static void main(String[] args) {
 
 		exam8 exam7 = new exam8(); 
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		int [] arr = new int [n];
+		int [][] arr = new int [n][n];
 		for(int i =0; i < n; i++) {
-			arr[i] = in.nextInt();
+			
+			for(int j = 0; j < n; j++) {
+				arr[i][j] = in.nextInt();
+			}
 		}
-		for(int a : exam7.solution(n, arr)) {
-			System.out.print(a + " ");
-		}
+		System.out.println(exam7.solution(arr));
 		
 	}
-	public ArrayList<Integer>  solution(int n,int [] arr) {
-		ArrayList<Integer> answer = new ArrayList<>();
-		
-		//등수 라는것을 구별할게 다 입력되있고, 그 순서도 배열에 담겨져 있다면
-		//등수 통을하나  지정하고 그 해당 점수가 해당되는 배열의 차수에서 그 점수를 지정하고
-		//그 지정된 점수를 다시한번 배열 돌려서 그 배열의 점수들이랑 다음꺼 비교 다음꺼 비교 이렇게 해보는거지
-		//배열에서 더 높은 점수가있다면 등수는 하나씩 뒤로 밀려나니까 1씩증가하겠지 지가 더크면 그 자릴 유지하고
-		//그리고 최초 배열 차수에서 그반환된 등수를 배열에 추가해주면 되는 것이다.
+	public int  solution(int [][] arr) {
+		int answer = Integer.MIN_VALUE;
+		int row_sum = 0;
+		int col_sum = 0;
+		int right_sum = 0;
+		int left_sum = 0;
 		
 		for(int i =0;  i < arr.length; i++) {
-			int rank = 1;
-			int score = arr[i];
-
-			for(int j = 0; j < arr.length; j++) {
-				
-				if(score < arr[j]) {
-					//등수는 뒤에 애가 클때 마다하나씩 증가 하면 되겠네 
-					rank ++; 
-				}
+			//좌측 대각합은 0,0 열 1,1,열 2,2,열 3,3,열 이렇게 나타난 값들의 합이다.
+			left_sum += arr[i][i];
+			
+			//우측 대각에서의합 각 행마다 그 행의 배열 길이의 -1 에서 그 행의 찻수 뺸 위치의 값들을 누적한 값이다.
+			right_sum += arr[i][arr[i].length -1 - i];
+			//해당 열의합
+			for(int k = 0; k < arr[i].length; k++) {
+				//열의 합 구하려면 열은 해당 차수에서는 고정이어야지 그니까 차수가 [][열]로 들어가고 앞에 행이 증가 하면서 더해지면 열이 구해지겠지
+				//아 이거 열 고정 한답시고 k 를 차수의 i 로 초기화 하고 반복 돌려서 오류 났었음. 어짜피 그 차수는 동일하기떄문에굳이안그래도 되고 그 해당 차수는 동일하게 0으로 돌리되 
+				//그 차수가 열로 고정되게 누적해서더해주기만 했으면 되는것.
+				//행의 합을 구한다 -> 하수에서 행고정 열증가 찻수가 행에 고정되서 누적합으로 더해진다.
+				//열의 합을 구한다 -> 차수에서 열고정 행증가 찻수가 열로 들어가서 고정되고 누적합으로 더해진다.
+				//이거 한 반복문 안에서 해도 됬었잖아...ㄷㄷ.
+				col_sum += arr[k][i];
+				row_sum += arr[i][k];
 			}
-			answer.add(rank);
+			//이조건 말고 answer = Math.max(answer,col_sum)
+			//이조건 말고 answer = Math.max(answer,row_sum)
+			//으로 갱신해줘도 괜찮아.
+			if(answer < col_sum) {
+				answer = col_sum;
+			}
+			if(answer < row_sum) {
+				answer = row_sum;
+			}
+			if(answer < left_sum) {
+				answer = left_sum;
+			}
+			if(answer < right_sum) {
+				answer = right_sum;
+			}
+			col_sum = 0;
+			row_sum = 0;
 		}
 		return answer;
 	}	

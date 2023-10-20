@@ -64,10 +64,9 @@ public class exam7 {
 			
 			if(arr[i] == 0) { //틀려버리면 추가되는 점수 0으로 초기화 게이지 0
 				score = 0;
-			}else {     //연승 게이지 연달아맞추는 그 시점의 횟수 자체가 되어야 하고 그 시점의 횟수는 반복 차수에서 
+			}else {     //연승 게이지 연달아맞추는 순서마다 증가
 				score ++;
 			}
-			//점수로 누적되어야 한다. 
 			answer = answer + score;
 		}
 		return answer;
