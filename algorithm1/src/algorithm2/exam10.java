@@ -54,13 +54,29 @@ public class exam10 {
 //	예시 출력 1
 //
 //	4
+	
+	//격자 판에서의 삼중 포문 하면 어떻게 인덱스가 이동하는가
+	
+	//첫째 for 문 행으로 증가
+	//둘쨰 포문 아랫 행 방향으로 반복문 차수 증가
+	//우측 열 방향으로 반복문 차수 증가
+//	
+//	첫 번째 반복문(i): 기준 학생 선택                
+//	→ 두 번째 반복문(j): 대상 학생 선택 (y축 방향)
+//	  → 세 번째 반복문(k): 각 학년 비교 (x축 방향)
+	
+	
+//	이게 첫번쨰 기준학생바퀴 기준으로 여기서  첫바퀴  시점의 [i][k]  와 일치하는 [jk]를 찾으면  
+//
+//	k 반복문에서는 
+//	break하던가 continue 해야 되는거지 아니면 옆의 열방향으로 이동해서  다른 학년의 반과도 비교 해버리니까
 	public static void main(String[] args) {
 
 		exam10 exam10 = new exam10(); 
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		int [][] arr = new int [n][n];
-		for(int i =0; i < n; i++) {
+		int [][] arr = new int [n][5];
+		for(int i =0; i < 5; i++) {
 			
 			for(int j = 0; j < n; j++) {
 				arr[i][j] = in.nextInt();
@@ -70,40 +86,29 @@ public class exam10 {
 		
 	}
 	public int  solution(int n,int [][] arr) {
-		ArrayList<Integer> student_list = new ArrayList<>();
-		ArrayList<Integer> count_list = new ArrayList<>();
 		int answer = 0;
 		int check = Integer.MIN_VALUE;
-		int total_count = 0;
-		int grade_count = 0;
 		
-		for(int i =0;  i < arr.length; i++) {
-			for(int j = 0; j < n; j++) {
-				//해당 열기준으로 쭉 탐색해서 그 학년에서 같은 반인적 카운트 
+		for(int i =0;  i < n; i++) { //기준 학생의 바퀴
+			int count = 0;
+			for(int j = 0; j < n; j++) {  //Y축 방향으로 증가한 이후 하면서 다른 학생 기준의 바퀴
 				
 				
-				for(int k = 0; k <n; k++) {
-					if(arr[j][k] == arr[i][j]) {
-						grade_count ++;
+				for(int k = 0; k <5; k++) { //y축 방향으로 증하 한 이후 열 방향으로 이제 그 기준 학생의 k 학년 에서의 반을 조회 할 수 있다.
+					if(arr[j][k] == arr[i][k]) {
+						count ++;
+						break;
 					}
 				}
-				total_count += grade_count;
 			}
 			
-			grade_count = 0;
-			System.out.println("해당 학생의 전체 중복 횟수" + total_count);
-			if(total_count > check) {
-				
-				if(total_count == check) {
-					student_list.add(i);
-				}
-				
-
+			if(check < count) {
+				check = count;
+				answer = i + 1;
 			}
-			total_count = 0;
+			
 		}
 		
-		System.out.println(answer);
 		return answer;
 	}	
 }
