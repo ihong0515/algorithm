@@ -1,0 +1,20 @@
+package sort_algorithm;
+
+public class bubble_sort {
+	/* 버블정렬 알고리즘 구현 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	public int [] bubble_sort(int[]arr) {
+		//큰 수를 담을 기준점 변수
+		int check = Integer.MIN_VALUE;
+		
+		for(int i = 0; i < arr.length; i++) {
+			//앞에수부터 배열로 시작해서 뒤에 숫자랑 비교해서 큰 수를 오름차순이면 뒤에 내림차순이면 앞에 놓는다.
+			for(int j = 1; j < arr.length - 1; j++) {
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,91 @@
+package algorithm3_two_pointer;
+
+import java.util.*;
+
+public class exam6_2 {
+//	5. 연속된 자연수의 합
+//	설명
+//
+//	N입력으로 양의 정수 N이 입력되면 2개 이상의 연속된 자연수의 합으로 정수 N을 표현하는 방법의 가짓수를 출력하는 프로그램을 작성하세요.
+//
+//	만약 N=15이면
+//
+//	7+8=15
+//
+//	4+5+6=15
+//
+//	1+2+3+4+5=15
+//
+//	와 같이 총 3가지의 경우가 존재한다.
+//
+//
+//	입력
+//	첫 번째 줄에 양의 정수 N(7<=N<1000)이 주어집니다.
+//
+//
+//	출력
+//	첫 줄에 총 경우수를 출력합니다.
+//
+//
+//	예시 입력 1 
+//
+//	15
+//	예시 출력 1
+//
+//	3
+	
+	
+	//투포인터로 쓰는데 어떻게 접근 할 것 인가.   
+	//lt rt 가 있을때 rt가 가르키는 것이 0이면 1로 바꾼다.   ->  1로 바꾼다 바꾸면 0을 1로 바꾼 회수 증가
+		// -> rt증가 할때 마다 길이를 증가한다. 
+		//1을 연속적으로 갖고 있는 수열의 길이는 rt - lt + 1  이거랑 기존 길이 비교해서 갱신
+	
+	//rt 가다가 0만났는데 count 다 찼을때  일단 0을 1로 바꾸긴함
+//		lt 역시 count < 3 조건에 해당 할때 까지 쫒아 간다. 
+//		얘는 쫒아 가다가  0을 만나면 다시 1로 바꿔놓은걸 0으로 바꿔즈고 증가 해준다. 
+//		이 과정이 k > count 가 작은 차수 안에서 
+	
+	//lt가 쫒아 가다가 
+	public static void main(String[] args) {
+		exam6_2 exam1 = new exam6_2(); 
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int k = in.nextInt();
+		int[] arr = new int [n];
+		for(int i = 0; i < n; i++) {
+			arr[i] = in.nextInt();
+		}
+		
+		
+		
+		
+		System.out.println(exam1.solution(n,k,arr));
+	}
+	public int solution(int n,int k,int[] arr) {
+		int answer = Integer.MIN_VALUE;
+		int left = 0;
+		int count = 0;
+		int length = 0;
+		
+		for(int right =0; right < n; right++) {
+			
+			if(answer < length) {
+				answer = length;
+			}
+			if(arr[right] == 0) {
+				count++;
+			}
+			while(arr[left] != 0) {
+				left++;
+				count--;
+			}
+			length = right - left + 1;
+		}
+		
+		return answer;
+			
+	}
+		
+	// sum = sum + sum[right] 가 else 문에 있을땐 오답 나옴
+	// 이렇게 안해주면 증감을 구분할 대상이 맨위에 항상 주어져야 조건문이 도는거지 언제는 주어지고 언제는 안주어지면 될까??
+}

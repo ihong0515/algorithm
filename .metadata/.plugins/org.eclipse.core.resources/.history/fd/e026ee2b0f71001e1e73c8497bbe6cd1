@@ -1,0 +1,43 @@
+package sort_algorithm;
+
+import java.util.*;
+
+
+
+public class bubble_sort {
+	/* 버블정렬 알고리즘 구현 */
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int [] arr = new int[n];
+		
+		for(int i = 0; i < n; i++) {
+			arr[i] = sc.nextInt();
+		};
+		bubble_sort bs = new bubble_sort();
+		
+		for(int a : arr) {
+			System.out.println(bs.bubble_sort(arr));
+		}
+		
+		
+	}
+	public int [] bubble_sort(int[]arr) {
+		//자리 바꿀때 보관통
+		int check = 0;
+		//내림차순으로 정렬 할거면 크면 j - 1인덱스 자리에 큰수가 오도록 
+		for(int i = 0; i < arr.length; i++) {
+			//앞에수부터 배열로 시작해서 뒤에 숫자랑 비교해서 큰 수를 오름차순이면 뒤에 내림차순이면 앞에 놓는다.
+			for(int j = 1; j < arr.length - 1; j++) {
+				if(arr[j] < arr[j - 1] ) {
+					check = arr[j - 1];
+					arr[j - 1] = arr[j];
+					arr[j] = check;
+				}
+			}
+		}
+		return arr;
+	}
+}
